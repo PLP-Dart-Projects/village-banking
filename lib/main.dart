@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:villagebanking/screens/signin.dart';
+import 'package:villagebanking/screens/signup.dart';
 import 'package:villagebanking/widgets/button.dart';
 
 void main() {
@@ -10,14 +12,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home(),
+    return MaterialApp(
+      home: const Home(),
+      routes: {
+        "/signin": (context) => const SignIn(),
+        "/signup": (context) => const SignUp(),
+      },
     );
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int currentValue = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,21 +42,35 @@ class Home extends StatelessWidget {
             right: 50,
             bottom: 30,
           ),
-          child: const Column(
+          child: Column(
             children: [
               SizedBox(
                 height: 40,
               ),
-              Text("Welcome Back"),
+              Text(
+                "Welcome Back",
+                style: TextStyle(
+                  fontSize: 35,
+                ),
+              ),
               Spacer(),
-              CustomButton(
-                title: "Sign in",
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/signin');
+                },
+                child: CustomButton(
+                  title: "Sign in",
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
-              CustomButton(
-                title: "Sign up",
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/signup'),
+                child: CustomButton(
+                  title: "Sign up",
+                  outline: true,
+                ),
               )
             ],
           ),
