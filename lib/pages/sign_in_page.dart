@@ -95,6 +95,10 @@ class _SignInPageState extends State<SignInPage> {
                 keyboardType: TextInputType.visiblePassword,
                 textInputAction: TextInputAction.done,
               ),
+              TextButton(
+                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                  onPressed: () {},
+                  child: const Text("Forgot Password?", textAlign: TextAlign.left,)),
               const Spacer(),
               const CustomButtonGradient(
                 title: "Sign in",
