@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     required this.title,
-    this.outline,
     super.key,
   });
   final String title;
-  final bool? outline;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,36 +14,32 @@ class CustomButton extends StatelessWidget {
         right: 15,
       ),
       height: 70,
-      decoration: outline == true
-          ? BoxDecoration(
-              border: Border.all(
-                color: const Color(0xFF1041F9),
-              ),
-              borderRadius: BorderRadius.circular(25),
-            )
-          : BoxDecoration(
-              color: Colors.blue,
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xFFE26C5C),
-                  Color(0xFF1041F9),
-                ],
-              ),
-              borderRadius: BorderRadius.circular(25),
-            ),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+            colors: [
+              Color.fromRGBO(255, 71, 20, 1),
+              Color.fromRGBO(73, 96, 249, 1),
+              //Color.fromRGBO(20, 51, 255, 1),
+            ],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
+        borderRadius: BorderRadius.circular(25),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
-              color: outline == true ? const Color(0xFF1041F9) : Colors.white,
+              color: Colors.white,
             ),
           ),
-          Icon(
-            Icons.arrow_forward_outlined,
-            color: outline == true ? const Color(0xFF1041F9) : Colors.white,
+          const Icon(
+            Icons.arrow_forward_sharp,
+            color: Colors.white,
+            size: 30.0,
           ),
         ],
       ),
