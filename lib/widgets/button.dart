@@ -89,3 +89,35 @@ class CustomButtonPlain extends StatelessWidget {
     );
   }
 }
+
+class CustomButtonColor extends StatelessWidget {
+  const CustomButtonColor({
+    required this.title,
+    super.key,
+  });
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(
+        left: 15,
+        right: 15,
+      ),
+      height: 70,
+      width: 320,
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(39, 67, 253,1),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Center(
+        child: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}

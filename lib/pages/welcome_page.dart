@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:villagebanking/pages/sign_up_page.dart';
-import 'package:villagebanking/pages/signinPage.dart';
+import 'package:villagebanking/pages/sign_in_page.dart';
 import 'package:villagebanking/widgets/button.dart';
 
 class WelcomePage extends StatelessWidget {

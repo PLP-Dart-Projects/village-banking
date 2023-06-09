@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:villagebanking/pages/otp_1_page.dart';
 import 'package:villagebanking/widgets/button.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -141,8 +142,18 @@ class _SignUpPageState extends State<SignUpPage> {
                   textInputAction: TextInputAction.done,
                 ),
                 const Spacer(),
-                const CustomButtonGradient(
-                  title: "Sign up",
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const OTP1Page(),
+                        ),
+                    );
+                  },
+                  child: const CustomButtonGradient(
+                    title: "Sign up",
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
