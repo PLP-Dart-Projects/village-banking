@@ -30,11 +30,7 @@ class WelcomePage extends StatelessWidget {
               const Spacer(),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(
-                    builder: (context) => const SignInPage(),
-                    ),
-                  );
+                  Navigator.pushNamed(context, 'signIn');
                 },
                 child: const CustomButtonGradient(
                   title: "Sign in",
@@ -45,11 +41,7 @@ class WelcomePage extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context, MaterialPageRoute(
-                    builder: (context) => const SignUpPage(),
-                  ),
-                  );
+                  Navigator.pushNamed(context, 'signUp');
                 },
                 child: const CustomButtonPlain(
                   title: "Sign up",

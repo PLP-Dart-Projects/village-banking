@@ -12,6 +12,8 @@ class OTP1Page extends StatefulWidget {
 }
 
 class _OTP1PageState extends State<OTP1Page> {
+
+
   @override
   Widget build(BuildContext context) {
     PhoneNumber number = PhoneNumber(
@@ -56,7 +58,11 @@ class _OTP1PageState extends State<OTP1Page> {
                 initialValue: number,
                 countrySelectorScrollControlled: true,
               ),
-              const CustomButtonColor(title: "Get OTP"),
+              InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, 'otp2');
+                  },
+                  child: const CustomButtonColor(title: "Get OTP")),
             ],
           ),
         ),

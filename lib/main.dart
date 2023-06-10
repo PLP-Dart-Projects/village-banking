@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:villagebanking/pages/otp_1_page.dart';
+import 'package:villagebanking/pages/otp_2_page.dart';
+import 'package:villagebanking/pages/sign_in_page.dart';
+import 'package:villagebanking/pages/sign_up_page.dart';
 import 'package:villagebanking/pages/welcome_page.dart';
 
 void main() {
@@ -15,7 +19,14 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Montserrat',
           scaffoldBackgroundColor: const Color.fromRGBO(245, 245, 245, 1),
       ),
-      home: const WelcomePage(),
+      initialRoute: 'welcome',
+      routes: {
+        'welcome': (context) => const WelcomePage(),
+        'signIn': (context) => const SignInPage(),
+        'signUp': (context) => const SignUpPage(),
+        'otp1': (context) => const OTP1Page(),
+        'otp2': (context) => const OTP2Page(),
+      },
     );
   }
 }

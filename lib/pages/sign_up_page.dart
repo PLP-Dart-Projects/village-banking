@@ -57,7 +57,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   color: Color.fromRGBO(58, 58, 58, 1)
                   ),
                 ),
-                TextField(
+                TextFormField(
+                  validator: (value) {
+                    if(value == null || value.isEmpty){
+                      return 'Empty';
+                    }
+                    return null;
+                  },
                   onChanged: (value) {
                     setState(() {
                       isValid = EmailValidator.validate(value);
@@ -84,7 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     controller: _pass,
                     obscureText: passwordVisible,
                     validator: (value) {
-                      if(value!.isEmpty){
+                      if(value == null || value.isEmpty){
                         return 'Empty';
                       }
                       return null;
@@ -113,7 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     controller: _confirmPass,
                     obscureText: passwordVisible,
                     validator: (value) {
-                      if (value!.isEmpty){
+                      if (value == null || value.isEmpty){
                         return 'Empty';
                       }
                       else if(_confirmPass.text != _pass.text) {
@@ -144,12 +150,15 @@ class _SignUpPageState extends State<SignUpPage> {
                 const Spacer(),
                 InkWell(
                   onTap: () {
-                    Navigator.push(
+                    if (_formKey.currentState!.validate()){
+                      Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const OTP1Page(),
                         ),
-                    );
+                        ModalRoute.withName('welcome'),
+                      );
+                    }
                   },
                   child: const CustomButtonGradient(
                     title: "Sign up",
