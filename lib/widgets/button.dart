@@ -121,3 +121,41 @@ class CustomButtonColor extends StatelessWidget {
     );
   }
 }
+class CustomButtonColorIcon extends StatelessWidget {
+  const CustomButtonColorIcon({
+    required this.title,
+    super.key, required this.isComplete,
+  });
+  final String title;
+  final bool isComplete;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(
+        left: 15,
+        right: 15,
+      ),
+      height: 70,
+      width: 320,
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(39, 67, 253,1),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Row(
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              color: Color.fromRGBO(200, 200, 200,1),
+            ),
+          ),
+           Icon( isComplete? Icons.check_sharp: null,
+            color: const Color.fromRGBO(200, 200, 200,1),
+            size: 30.0,
+          )
+        ],
+      ),
+    );
+  }
+}
