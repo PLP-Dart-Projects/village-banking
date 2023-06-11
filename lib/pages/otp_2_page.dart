@@ -3,7 +3,8 @@ import 'package:pinput/pinput.dart';
 import 'package:villagebanking/widgets/button.dart';
 
 class OTP2Page extends StatefulWidget {
-  const OTP2Page({Key? key}) : super(key: key);
+  final String? phone;
+  const OTP2Page({Key? key, required this.phone}) : super(key: key);
 
   @override
   State<OTP2Page> createState() => _OTP2PageState();
@@ -17,6 +18,7 @@ class _OTP2PageState extends State<OTP2Page> {
     final pinController = TextEditingController();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
             padding: const EdgeInsets.only(
@@ -25,28 +27,37 @@ class _OTP2PageState extends State<OTP2Page> {
               bottom: 30,
             ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              const SizedBox( height: 50,),
               const Image(
                 image: AssetImage("assets/images/OTP_1.png"),
               ),
+              const SizedBox(height: 70,),
               const Text("OTP Verification",
               style: TextStyle(
                   fontSize: 29,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Text("Enter the OTP sent to",
-              style: TextStyle(
+              const SizedBox(height: 30,),
+              Text("Enter the OTP sent to ${widget.phone}",
+              style: const TextStyle(
                 fontSize: 19,
                 ),
+                textAlign: TextAlign.center,
               ),
+              const SizedBox(height: 80,),
               Pinput(
                 length: 4,
                 keyboardType: TextInputType.number,
                 controller: pinController,
                 showCursor: true,
                 isCursorAnimationEnabled: true,
+                  cursor: const TextField(
+                    decoration: InputDecoration(
+                        fillColor: Color.fromRGBO(24, 245, 245, 1)
+                    ),
+                  ),
                 defaultPinTheme: const PinTheme(
                   width: 50,
                   height: 50,
@@ -60,11 +71,23 @@ class _OTP2PageState extends State<OTP2Page> {
                     )
                   )
                 ),
-                cursor: const TextField(
-                  decoration: InputDecoration(
-                    fillColor: Color.fromRGBO(245, 245, 245, 1)
-                  ),
-                ),
+                separator: const SizedBox(width: 20,),
+              ),
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Didn't Receive OTP?",
+                    style: TextStyle(
+                        color: Color.fromRGBO(185, 185, 185, 1)
+                    ),),
+                  TextButton(
+                      onPressed: () {},
+                      child: const Text("Resend OTP",
+                        style: TextStyle(
+                            color: Color.fromRGBO(39, 67, 253, 1)
+                        ),))
+                ],
               ),
               InkWell(
                   onTap: () {
