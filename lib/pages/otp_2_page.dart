@@ -28,25 +28,25 @@ class _OTP2PageState extends State<OTP2Page> {
             ),
           child: Column(
             children: [
-              const SizedBox( height: 50,),
+              SizedBox(height: MediaQuery.of(context).size.height/18,),
               const Image(
                 image: AssetImage("assets/images/OTP_1.png"),
               ),
-              const SizedBox(height: 70,),
+              SizedBox(height: MediaQuery.of(context).size.height/13,),
               const Text("OTP Verification",
               style: TextStyle(
                   fontSize: 29,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 30,),
+              SizedBox(height: MediaQuery.of(context).size.height/30,),
               Text("Enter the OTP sent to ${widget.phone}",
               style: const TextStyle(
                 fontSize: 19,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 80,),
+              SizedBox(height: MediaQuery.of(context).size.height/12,),
               Pinput(
                 length: 4,
                 keyboardType: TextInputType.number,
@@ -73,7 +73,7 @@ class _OTP2PageState extends State<OTP2Page> {
                 ),
                 separator: const SizedBox(width: 20,),
               ),
-              Spacer(),
+              const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

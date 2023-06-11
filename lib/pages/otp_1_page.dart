@@ -59,24 +59,24 @@ class _OTP1PageState extends State<OTP1Page> {
             ),
           child: Column(
             children: [
-              const SizedBox(height: 50,),
+              SizedBox(height: MediaQuery.of(context).size.height/18,),
               const Image(
                 image: AssetImage("assets/images/OTP_1.png"),
               ),
-              const SizedBox(height: 70,),
+              SizedBox(height: MediaQuery.of(context).size.height/13,),
               const Text("OTP Verification",
               style: TextStyle(
                   fontSize: 29,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 30,),
+              SizedBox(height: MediaQuery.of(context).size.height/30,),
               const Text("  We will send you a one-time password to this mobile number",
               style: TextStyle(
                 fontSize: 19,
                 ),
               ),
-              const SizedBox(height: 30,),
+              SizedBox(height: MediaQuery.of(context).size.height/30,),
               const Text("Enter mobile number",
               style: TextStyle(
                   color: Color.fromRGBO(185, 185, 185, 1)
@@ -105,7 +105,7 @@ class _OTP1PageState extends State<OTP1Page> {
               const Spacer(),
               InkWell(
                   onTap: () {
-                      Navigator.push(
+                    Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => OTP2Page(phone: savedNumber),
