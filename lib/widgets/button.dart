@@ -142,6 +142,7 @@ class CustomButtonColorIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             title,
@@ -150,6 +151,7 @@ class CustomButtonColorIcon extends StatelessWidget {
               color: Color.fromRGBO(200, 200, 200,1),
             ),
           ),
+           SizedBox(width: MediaQuery.of(context).size.width/40,),
            Icon( isComplete? Icons.check_sharp: null,
             color: const Color.fromRGBO(200, 200, 200,1),
             size: 30.0,

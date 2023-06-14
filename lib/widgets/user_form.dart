@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class UserForm extends StatefulWidget {
-  const UserForm({Key? key}) : super(key: key);
+  final BoolCallback onFormFilled;
+  const UserForm({Key? key, required this.onFormFilled}) : super(key: key);
 
   @override
   State<UserForm> createState() => _UserFormState();
@@ -11,12 +12,14 @@ class UserForm extends StatefulWidget {
 class _UserFormState extends State<UserForm> {
   TextEditingController inputDate = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  late final BoolCallback onFormFilled;
 
 
   @override
   void initState() {
     inputDate.text = '';
     super.initState();
+    onFormFilled = (isFilled) {};
   }
 
   Future _selectDate() async {
@@ -28,7 +31,12 @@ class _UserFormState extends State<UserForm> {
       builder: (context, child) {
         return Theme(
             data: Theme.of(context).copyWith(
-              primaryColor: const Color.fromRGBO(73, 12, 249, 1),
+              colorScheme: const ColorScheme.dark(
+                primary: Color.fromRGBO(73, 96, 249, 1),
+                onPrimary: Color.fromRGBO(245, 245, 245, 1),
+                onSurface: Color.fromRGBO(73, 96, 249, 1),
+                surface: Color.fromRGBO(73, 184, 249, 1),
+              )
             ),
             child: child!);
       },
@@ -133,6 +141,12 @@ class _UserFormState extends State<UserForm> {
           ),
           TextFormField(
             controller: inputDate,
+            validator: (value) {
+              if(value == null || value.isEmpty){
+                return 'Empty';
+              }
+              return null;
+            },
             readOnly: true,
             style: const TextStyle(
               fontSize: 16,
@@ -149,6 +163,13 @@ class _UserFormState extends State<UserForm> {
           ),
         ],
       ),
+      onChanged: () {
+        setState(() {
+          widget.onFormFilled(_formKey.currentState!.validate());
+        });
+      },
     );
   }
 }
+
+typedef BoolCallback = void Function(bool isFilled);

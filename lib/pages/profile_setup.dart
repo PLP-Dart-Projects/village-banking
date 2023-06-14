@@ -10,6 +10,8 @@ class ProfileSetupPage extends StatefulWidget {
 }
 
 class _ProfileSetupState extends State<ProfileSetupPage> {
+  bool isComplete = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +38,17 @@ class _ProfileSetupState extends State<ProfileSetupPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height/3.5,
+                height: MediaQuery.of(context).size.height/4,
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset('assets/images/Camera_1.png'),
               ),
-              const UserForm(),
+              UserForm(onFormFilled: (isFilled) {
+                setState(() {
+                  isComplete = isFilled;
+                });
+              },),
               const Spacer(),
-              const CustomButtonColor(title: 'Complete')
+              CustomButtonColorIcon(title: 'Complete', isComplete: isComplete,)
             ],
           ),
         ),
