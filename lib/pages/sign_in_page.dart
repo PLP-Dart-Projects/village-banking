@@ -1,5 +1,9 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:villagebanking/pages/forgot_pw_page.dart';
+import 'package:villagebanking/utilities/dialog.dart';
+import 'package:villagebanking/utilities/exceptions.dart';
 import 'package:villagebanking/widgets/button.dart';
 
 class SignInPage extends StatefulWidget {
@@ -12,12 +16,41 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   bool passwordVisible = true;
   bool isValid = true;
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _pass = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     passwordVisible = false;
   }
+
+  Future signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _email.text.trim(),
+          password: _pass.text.trim()
+      );
+    } on FirebaseAuthException catch (e){
+      if (e.code == 'user-not-found'){
+        showErrorDialog(context, 'Error', 'The user was not found,'
+            ' enter the correct email.');
+        throw UserNotFoundAuthException();
+      } else if(e.code == 'wrong-password') {
+        showErrorDialog(context, 'Error', 'Wrong password, try again!');
+        throw WrongPasswordAuthException();
+      }
+      else {
+        showErrorDialog(context, 'Error', 'An error has occurred, try again.');
+        throw GenericAuthException();
+      }
+    } catch (_){
+      showErrorDialog(context, 'Error', _.toString());
+      throw GenericAuthException();
+    }
+
+  }
+
 
 
   @override
@@ -51,6 +84,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
               ),
               TextField(
+                controller: _email,
                 onChanged: (value) {
                   setState(() {
                     isValid = EmailValidator.validate(value);
@@ -74,8 +108,9 @@ class _SignInPageState extends State<SignInPage> {
                   ),
               ),
               TextField(
-                  obscureText: passwordVisible,
-                  decoration: InputDecoration(
+                controller: _pass,
+                obscureText: passwordVisible,
+                decoration: InputDecoration(
                     label: const Text("Password",
                     style: TextStyle(
                       color: Color.fromRGBO(185, 185, 185, 1)
@@ -97,11 +132,25 @@ class _SignInPageState extends State<SignInPage> {
               ),
               TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                      builder: (context) => const ForgotPwPage(),),
+                    );
+                  },
                   child: const Text("Forgot Password?", textAlign: TextAlign.left,)),
               const Spacer(),
-              const CustomButtonGradient(
-                title: "Sign in",
+              InkWell(
+                onTap: () async {
+                  await signIn();
+                  if (context.mounted) {
+                    Navigator.pushNamed(context, 'home');
+                  }
+                },
+                child: const CustomButtonGradient(
+                  title: "Sign in",
+                ),
               ),
               const SizedBox(
                 height: 20,
