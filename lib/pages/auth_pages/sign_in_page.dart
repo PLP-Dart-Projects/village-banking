@@ -1,7 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:villagebanking/pages/forgot_pw_page.dart';
+import 'package:villagebanking/pages/auth_pages/forgot_pw_page.dart';
 import 'package:villagebanking/utilities/dialog.dart';
 import 'package:villagebanking/utilities/exceptions.dart';
 import 'package:villagebanking/widgets/button.dart';

@@ -2,9 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:villagebanking/pages/home_page.dart';
 import 'package:villagebanking/pages/main_page.dart';
-import 'package:villagebanking/pages/otp_1_page.dart';
-import 'package:villagebanking/pages/sign_in_page.dart';
-import 'package:villagebanking/pages/sign_up_page.dart';
+import 'package:villagebanking/pages/auth_pages/otp_1_page.dart';
+import 'package:villagebanking/pages/auth_pages/sign_in_page.dart';
+import 'package:villagebanking/pages/auth_pages/sign_up_page.dart';
 import 'package:villagebanking/pages/welcome_page.dart';
 
 import 'firebase_options.dart';

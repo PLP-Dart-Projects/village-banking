@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:villagebanking/pages/otp_2_page.dart';
+import 'package:villagebanking/pages/auth_pages/otp_2_page.dart';
 import 'package:villagebanking/widgets/button.dart';
 
 class OTP1Page extends StatefulWidget {
