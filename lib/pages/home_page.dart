@@ -53,6 +53,23 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
+            top: screenHeight/16,
+            left: screenWidth/1.35,
+            right: screenWidth/11,
+            height: screenHeight/14,
+            child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(27),
+                    color: const Color.fromRGBO(73, 96, 249, 1),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(27),
+                    child: Image.asset('assets/images/zakia_potrait.jpg',
+                    fit: BoxFit.fill,),
+                  )
+                ),
+          ),
+          Positioned(
             top: screenHeight/7.5,
             left: screenWidth/8,
             right: screenWidth/8,
@@ -75,6 +92,22 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ),
                 ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: screenHeight/8.8,
+            left: screenWidth/1.15,
+            right: screenWidth/11.2,
+            height: screenHeight/53,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: const Color.fromRGBO(32, 201, 104, 1),
+                border: Border.all(
+                  color: const Color.fromRGBO(255, 255, 255, 1),
+                  width: 2,
+                )
               ),
             ),
           ),
@@ -108,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(
                       height: screenHeight/26,),
-                    const Text('TSH  50,000',
+                    const Text('TSH 50,000',
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -170,13 +203,13 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         items: [
           BottomNavigationBarItem(
-              icon: const Icon(Icons.account_balance_wallet_sharp),
+              icon: Image.asset('assets/images/wallet.png'),
               activeIcon: Image.asset('assets/images/wallet_active.png'),
               label: '',
           ),
           BottomNavigationBarItem(
               icon: Image.asset('assets/images/notification.png'),
-              activeIcon: const Icon(Icons.notifications_outlined),
+              activeIcon: Image.asset('assets/images/notification_active.png'),
               label: '',
           ),
           BottomNavigationBarItem(

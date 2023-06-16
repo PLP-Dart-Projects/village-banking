@@ -16,8 +16,6 @@ class _OTP2PageState extends State<OTP2Page> {
 
   @override
   Widget build(BuildContext context) {
-    final pinController = TextEditingController();
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
