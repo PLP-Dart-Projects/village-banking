@@ -35,6 +35,13 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  email_validator: ^2.1.17
+  intl_phone_number_input: ^0.7.3+1
+  intl_phone_field: ^3.1.0
+  pinput: ^2.2.31
+  intl: ^0.18.1
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.6.3
 
 dev_dependencies:
   flutter_test:
@@ -59,8 +66,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+     - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -74,10 +81,51 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+     - family: Montserrat
+       fonts:
+         - asset: assets/fonts/Montserrat/Montserrat-Thin.ttf
+           weight: 100
+         - asset: assets/fonts/Montserrat/Montserrat-ThinItalic.ttf
+           style: italic
+           weight: 100
+         - asset: assets/fonts/Montserrat/Montserrat-ExtraLight.ttf
+           weight: 200
+         - asset: assets/fonts/Montserrat/Montserrat-ExtraLightItalic.ttf
+           style: italic
+           weight: 200
+         - asset: assets/fonts/Montserrat/Montserrat-Light.ttf
+           weight: 300
+         - asset: assets/fonts/Montserrat/Montserrat-LightItalic.ttf
+           style: italic
+           weight: 300
+         - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+           weight: 400
+         - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
+           weight: 500
+         - asset: assets/fonts/Montserrat/Montserrat-MediumItalic.ttf
+           style: italic
+           weight: 500
+         - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
+           weight: 600
+         - asset: assets/fonts/Montserrat/Montserrat-SemiBoldItalic.ttf
+           style: italic
+           weight: 600
+         - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
+           weight: 700
+         - asset: assets/fonts/Montserrat/Montserrat-BoldItalic.ttf
+           style: italic
+           weight: 700
+         - asset: assets/fonts/Montserrat/Montserrat-ExtraBold.ttf
+           weight: 800
+         - asset: assets/fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf
+           style: italic
+           weight: 800
+         - asset: assets/fonts/Montserrat/Montserrat-Black.ttf
+           weight: 900
+         - asset: assets/fonts/Montserrat/Montserrat-BlackItalic.ttf
+           style: italic
+           weight: 900
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

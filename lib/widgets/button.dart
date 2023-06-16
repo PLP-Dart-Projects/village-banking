@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class CustomButtonGradient extends StatelessWidget {
+  const CustomButtonGradient({
     required this.title,
-    this.outline,
     super.key,
   });
   final String title;
-  final bool? outline;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,37 +14,148 @@ class CustomButton extends StatelessWidget {
         right: 15,
       ),
       height: 70,
-      decoration: outline == true
-          ? BoxDecoration(
-              border: Border.all(
-                color: const Color(0xFF1041F9),
-              ),
-              borderRadius: BorderRadius.circular(25),
-            )
-          : BoxDecoration(
-              color: Colors.blue,
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xFFE26C5C),
-                  Color(0xFF1041F9),
-                ],
-              ),
-              borderRadius: BorderRadius.circular(25),
-            ),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+            colors: [
+              Color.fromRGBO(255, 71, 20, 1),
+              Color.fromRGBO(73, 96, 249, 1),
+              //Color.fromRGBO(20, 51, 255, 1),
+            ],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
+        borderRadius: BorderRadius.circular(25),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
-              color: outline == true ? const Color(0xFF1041F9) : Colors.white,
+              color: Colors.white,
             ),
           ),
-          Icon(
-            Icons.arrow_forward_outlined,
-            color: outline == true ? const Color(0xFF1041F9) : Colors.white,
+          const Icon(
+            Icons.arrow_forward_sharp,
+            color: Colors.white,
+            size: 30.0,
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomButtonPlain extends StatelessWidget {
+  const CustomButtonPlain({
+    required this.title,
+    super.key,
+  });
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(
+        left: 15,
+        right: 15,
+      ),
+      height: 70,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(25),
+        border: Border.all(
+            color: const Color.fromRGBO(39, 67, 253,1),
+            width: 2.0,
+        )
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              color: Color.fromRGBO(39, 67, 253,1),
+            ),
+          ),
+          const Icon(
+            Icons.arrow_forward_sharp,
+            color: Color.fromRGBO(39, 67, 253,1),
+            size: 30.0,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomButtonColor extends StatelessWidget {
+  const CustomButtonColor({
+    required this.title,
+    super.key,
+  });
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(
+        left: 15,
+        right: 15,
+      ),
+      height: 70,
+      width: 320,
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(39, 67, 253,1),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Center(
+        child: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+class CustomButtonColorIcon extends StatelessWidget {
+  const CustomButtonColorIcon({
+    required this.title,
+    super.key, required this.isComplete,
+  });
+  final String title;
+  final bool isComplete;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(
+        left: 15,
+        right: 15,
+      ),
+      height: 70,
+      width: 320,
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(39, 67, 253,1),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              color: Color.fromRGBO(200, 200, 200,1),
+            ),
+          ),
+           SizedBox(width: MediaQuery.of(context).size.width/40,),
+           Icon( isComplete? Icons.check_sharp: null,
+            color: const Color.fromRGBO(200, 200, 200,1),
+            size: 30.0,
+          )
         ],
       ),
     );
